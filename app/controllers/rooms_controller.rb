@@ -1,6 +1,9 @@
 class RoomsController < ApplicationController
 
 
+	#i want to a check before certain actions happen
+	before_action :make_sure_logged_in, only: [:new, :create, :edit, :update, :destroy]
+
 	def index
 		#this is the homepage
 		@rooms = Room.all
@@ -19,7 +22,7 @@ class RoomsController < ApplicationController
 
 	def new 
 		#add a new room
-		@room = Room.new
+		@room = current_user.rooms.new
 	end
 
 
@@ -32,7 +35,7 @@ class RoomsController < ApplicationController
 
 	def create
 		#actually add the room to database
-		@room = Room.new(room_params)
+		@room = current_user.rooms.new(room_params)
 
 		if  @room.save
 			flash[:success] = "you've added this room"
@@ -53,7 +56,7 @@ class RoomsController < ApplicationController
 
 	def edit
 		#a form for editing the room
-		@room = Room.find(params[:id])
+		@room = current_user.rooms.find(params[:id])
 	end
 
 
@@ -65,7 +68,7 @@ class RoomsController < ApplicationController
 
 	def update
 		#it will actually edit it
-		@room = Room.find(params[:id])
+		@room = current_user.rooms.find(params[:id])
 		
 		if @room.update(room_params)
 			flash[:success] = "you've updated this room"
@@ -78,7 +81,7 @@ class RoomsController < ApplicationController
 
 	def destroy
 		#actually delete form the database
-		@room = Room.find(params[:id])
+		@room = current_user.rooms.find(params[:id])
 
 		@room.destroy
 		flash[:success] = "room has been deleted :("

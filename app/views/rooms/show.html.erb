@@ -12,10 +12,20 @@
 </p>
 
 
-<div class="actions">
-	<%= link_to "Edit", edit_room_path(@room) %>
-	<%= link_to "Delete", room_path(@room), method: :delete, data: { confirm: "are you sure?" } %>
-</div>
+
+
+<% if @room.user.present? %>
+	<p> added by <%= @room.user.username %> </p>
+<% end %>
+
+
+<% if current_user.present? and current_user == @rooms.user %>
+	<div class="actions">
+		<%= link_to "Edit", edit_room_path(@room) %>
+		<%= link_to "Delete", room_path(@room), method: :delete, data: { confirm: "are you sure?" } %>
+	</div>
+
+<%end%>
 
 
 

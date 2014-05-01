@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	
 	#associations
+	has_many :rooms
 
 	#validations
 	validates :username, presence: true, uniqueness: true

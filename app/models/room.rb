@@ -1,6 +1,7 @@
 class Room < ActiveRecord::Base
 
 	#associations 
+	belongs_to :user
 
 	#validations 
 	validates :name, presence: true
