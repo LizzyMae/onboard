@@ -1,0 +1,20 @@
+<h2> <%= @room.name %> </h2>
+
+<%= simple_format @room.description %>
+
+<p>
+<strong>Address:</strong>
+<%= @room.address %>
+</p>
+
+
+<div class="actions">
+	<%= link_to "Edit", edit_room_path(@room) %>
+	<%= link_to "Delete", room_path(@room), method: :delete, data: { confirm: "are you sure?"} %>
+</div>
+
+
+
+
+
+<%= link_to "back to homepage", root_path %>
