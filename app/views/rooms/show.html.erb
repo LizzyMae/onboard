@@ -1,3 +1,7 @@
+
+<%= image_tag @room.image(:large) %>
+
+
 <h2> <%= @room.name %> </h2>
 
 <%= simple_format @room.description %>
@@ -10,7 +14,7 @@
 
 <div class="actions">
 	<%= link_to "Edit", edit_room_path(@room) %>
-	<%= link_to "Delete", room_path(@room), method: :delete, data: { confirm: "are you sure?"} %>
+	<%= link_to "Delete", room_path(@room), method: :delete, data: { confirm: "are you sure?" } %>
 </div>
 
 
