@@ -19,15 +19,34 @@
 
 	<nav>
 		<% if current_user.present? %>
-		<%= current_user.name %>
+			<%= current_user.name %>
+			<%= link_to "log out", session_path, method: :delete %>
 		<% else %>
-		<%= link_to "Sign up", new_user_path%>
+			<%= link_to "log in", new_session_path %>
+			 <%= link_to "Sign up", new_user_path%>
 		<% end %>
 	</nav>
 
 </header>
 
 
+
+
+
+<% if flash[:success].present? %>
+<div class="success">
+	<%=flash[:success] %>
+</div>
+<% end %>
+
+
+
+
+<% if flash[:error].present? %>
+<div class="error">
+	<%=flash[:error] %>
+</div>
+<% end %>
 
 <%= yield %>
 
