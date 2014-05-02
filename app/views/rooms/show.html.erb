@@ -19,7 +19,7 @@
 <% end %>
 
 
-<% if current_user.present? and current_user == @rooms.user %>
+<% if current_user.present? and current_user == @room.user %>
 	<div class="actions">
 		<%= link_to "Edit", edit_room_path(@room) %>
 		<%= link_to "Delete", room_path(@room), method: :delete, data: { confirm: "are you sure?" } %>
@@ -28,7 +28,7 @@
 <%end%>
 
 
-
+<%= link_to "book this room", new_room_order_path(@room) %>
 
 
 <%= link_to "back to homepage", root_path %>

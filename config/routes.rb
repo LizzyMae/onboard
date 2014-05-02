@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   #we want to add the abilitie ti create update delete and view rooms
-  resources :rooms
+  resources :rooms do
+  	#becuase orders are always on rooms we nest the resources
+  	resources :orders
+  end
 
   #signup
   resources :users

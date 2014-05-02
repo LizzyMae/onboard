@@ -2,6 +2,7 @@ class Room < ActiveRecord::Base
 
 	#associations 
 	belongs_to :user
+	has_many :orders
 
 	#validations 
 	validates :name, presence: true
