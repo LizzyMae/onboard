@@ -24,7 +24,8 @@ class OrdersController < ApplicationController
 			#CHARGE THEM WITH STRIPE
 			Stripe::Charge.create(amount: @room.price_in_pence, currency: "gbp", card: @order.stripe_token, description: "onboard order")
 
-
+			#once we ve saved the order send out an email to booker!
+			OrderMailer.new_order_notification(@order).deliver
 
 			flash[:success] = "yeahhhh you've ordered this room"
 			redirect_to room_path(@room)
