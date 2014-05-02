@@ -8,6 +8,7 @@ class Room < ActiveRecord::Base
 	validates :name, presence: true
 	validates :address, presence: true
 	validates :number_of_guests, presence: true, numericality: { greater_than: 0 }
+	validates :price_in_pence, presence: true, numericality: { greater_than_or_equal_to: 50 }
 
 
 	#plugins

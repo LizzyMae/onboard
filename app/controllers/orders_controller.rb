@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
 		if @order.save
 
 			#CHARGE THEM WITH STRIPE
-			Stripe::Charge.create(amount: 100, currency: "gbp", card: @order.stripe_token, description: "onboard order")
+			Stripe::Charge.create(amount: @room.price_in_pence, currency: "gbp", card: @order.stripe_token, description: "onboard order")
 
 
 
