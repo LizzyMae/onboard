@@ -65,6 +65,9 @@ gem 'omniauth-linkedin'
 gem 'steer'
 
 
+# add in fondation gem by zurb
+gem 'foundation-rails'
+
 
 
 
